@@ -1,29 +1,70 @@
 #!/dev/null
 
-from flask import Flask, request, make_response, send_file, Response
+from flask import Flask, request, make_response
 from subprocess import run
 from time import time
-from io import BytesIO
+from sys import stdout
+# from io import BytesIO
+
+TRANSPOSE={
+    'Gb':  "-6",
+    'Db': "-11",
+    'Ab':  "-4",
+    'Eb':  "-9",
+    'Bb':  "-2",
+    'F':   "-7",
+    'C':    "0",
+    'G':   "+7",
+    'D':   "+2",
+    'A':   "+9",
+    'E':   "+4",
+    'B':  "+11",
+    'Fi':  "+6",
+    'Ci':  "+1",
+}
 
 app = Flask(__name__)
 
+# @app.route('/', methods = ['POST',])
 @app.route('/', methods = ['POST',])
 def hello_world():
+
+    # lead = request.args.get("lead", default="Unknown Person")
+    # subtitle = f"({lead})"
+    subtitle = ""
+
+    key = request.args.get("key", default="C")
+    assert key in TRANSPOSE
+
+    # time_and_tempo = 4/4 time 114
+
     # data = request.form
     data = request.get_data()
     assert type(data) == bytes
-    print(data.decode())
-    p = run([
+    # print(data.decode())
+
+    args = [
         "/opt/homebrew/opt/perl/bin/chordpro",
+        "--config=/Users/darren/ChordProMax/conf.prp",
         "--diagrams=none",
         "-o", "/dev/stdout",
+        "--meta", f"key={key}",
+        "--meta", f"subtitle={subtitle}",
+        "-x", TRANSPOSE[key],
         "-",
-    ], input=data, capture_output=True)
+    ]
+    print(args)
+    stdout.flush()
+
+    p = run(args, input=data, capture_output=True)
+    if p.stderr != b'':
+        print("E > > >")
+        print(p.stderr.decode())
+        print("< < < E")
+        stdout.flush()
+        raise RuntimeError
     assert p.returncode == 0
-    assert p.stderr == b''
     assert type(p.stdout) == bytes
-    # print(p)
-    # print(p.stdout)
 
     fn = f"{int(time())}.pdf"
     print(fn)

@@ -1,3 +1,5 @@
+# ./chordpromax.XXX.pdf
+
 default: s
 
 p:
