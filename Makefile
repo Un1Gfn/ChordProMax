@@ -11,4 +11,4 @@ p:
 	  http://127.0.0.1:5000
 
 s:
-	flask --debug -A hello run
+	cd ~/t6kq9t.ChordProMax; flask --debug -A hello run

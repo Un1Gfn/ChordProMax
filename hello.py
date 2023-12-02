@@ -6,7 +6,9 @@ from time import time
 from sys import stdout
 # from io import BytesIO
 
-TRANSPOSE={
+CHORDPRO = "/opt/homebrew/opt/perl/bin/chordpro"
+
+TRANSPOSE = {
     'Gb':  "-6",
     'Db': "-11",
     'Ab':  "-4",
@@ -44,8 +46,8 @@ def hello_world():
     # print(data.decode())
 
     args = [
-        "/opt/homebrew/opt/perl/bin/chordpro",
-        "--config=/Users/darren/ChordProMax/conf.prp",
+        CHORDPRO,
+        "--config=./conf.prp",
         "--diagrams=none",
         "-o", "/dev/stdout",
         "--meta", f"key={key}",
