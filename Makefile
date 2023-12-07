@@ -1,14 +1,53 @@
 # ./chordpromax.XXX.pdf
 
-default: s
+# conflict with AirPlay receiver
+PORT:=5000
+IP:=127.0.0.1
+CHO:=tmp.cho
+PDF:=tmp.pdf
 
-p:
-	$(HOMEBREW_PREFIX)/opt/curl/bin/curl \
-	  -X POST \
-	  -H "Content-Type: text/plain; charset=utf-8" \
-	  --data-binary @/Users/darren/bible.NSleadsheets/1457082236.cho \
-	  -O -J \
-	  http://127.0.0.1:5000
+.SILENT: help
+.PHONY: help
+help:
+	echo
+	echo '$(MAKE) c' - delete PDF
+	echo '$(MAKE) s' - flask
+	echo '$(MAKE) e' - entr
+	echo '$(MAKE) o' - open
+	echo
+	echo '$(MAKE) 2' -               flask + entr
+	echo '$(MAKE) 3' -        open + flask + entr
+	echo '$(MAKE) 4' - code + open + flask + entr
+	echo
+
+4:
+	code tmp.cho
+	$(MAKE) emptypdf
+	$(MAKE) o
+	$(MAKE) -j2 s e
+
+3:
+	$(MAKE) o
+	$(MAKE) emptypdf
+	$(MAKE) -j2 s e
+
+2:
+	$(MAKE) -j2 s e
+
+o:
+	open $(PDF)
+
+e:
+	echo tmp.cho | entr -p ./post.zsh $(IP):$(PORT) $(PDF) $(CHO)
 
 s:
-	cd ~/t6kq9t.ChordProMax; flask --debug -A hello run
+	cd ~/t6kq9t.ChordProMax; flask -A myapp run -h $(IP) -p $(PORT) --debug
+
+c:
+	rm -fv $(PDF)
+
+# https://unix.stackexchange.com/questions/277892/how-do-i-create-a-blank-pdf-from-the-command-line
+emptypdf:
+	gs -sDEVICE=pdfwrite -o $(PDF) -g5950x8420 -c showpage
+
+# a2crd:
