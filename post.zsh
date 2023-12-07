@@ -2,6 +2,7 @@
 
 CMD=(
   $HOMEBREW_PREFIX/opt/curl/bin/curl
+  --silent
   -X POST
   -H "Content-Type: text/plain; charset=utf-8"
   --data-binary @$3
@@ -10,6 +11,5 @@ CMD=(
   http://$1
 )
 
-for i in $CMD[@]; do echo $i; done
-
-$CMD[@] $@; exit
+# for i in $CMD[@]; do echo $i; done
+$CMD[@]; exit

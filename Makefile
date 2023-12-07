@@ -38,7 +38,7 @@ o:
 	open $(PDF)
 
 e:
-	echo tmp.cho | entr -p ./post.zsh $(IP):$(PORT) $(PDF) $(CHO)
+	ls -1 tmp.cho conf.prp | entr -p ./post.zsh $(IP):$(PORT) $(PDF) $(CHO)
 
 s:
 	cd ~/t6kq9t.ChordProMax; flask -A myapp run -h $(IP) -p $(PORT) --debug

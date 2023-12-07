@@ -61,9 +61,9 @@ def hello_world():
 
     p = run(args, input=data, capture_output=True)
     if p.stderr != b'':
-        print("E > > >")
-        print(p.stderr.decode())
-        print("< < < E")
+        print("\n*******")
+        print(p.stderr.decode(), end="")
+        print("*******\n")
         stdout.flush()
         raise RuntimeError
     assert p.returncode == 0

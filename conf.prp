@@ -13,6 +13,21 @@ dates.today.format = "%a %e %b %Y %T %Z"
 # override!
 # settings.columns = 1
 
+chords = [
+  {
+    name = "C/E"
+  }
+  {
+    name = "C/G"
+  }
+  {
+    name = "Em/G#"
+  }
+  {
+    name = "G/B"
+  }
+]
+
 pdf {
 
   # PAPERSIZE = [ WIDTH HEIGHT ]
