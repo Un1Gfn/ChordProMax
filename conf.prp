@@ -26,6 +26,12 @@ chords = [
   {
     name = "G/B"
   }
+  {
+    name = "F/C"
+  }
+  {
+    name = "F2"
+  }
 ]
 
 pdf {
