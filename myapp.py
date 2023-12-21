@@ -4,9 +4,8 @@ from flask import Flask, request, make_response
 from subprocess import run
 from time import time
 from sys import stdout
+from os import getenv
 # from io import BytesIO
-
-CHORDPRO = "/opt/homebrew/opt/perl/bin/chordpro"
 
 TRANSPOSE = {
     'Gb':  "-6",
@@ -46,7 +45,7 @@ def hello_world():
     # print(data.decode())
 
     args = [
-        CHORDPRO,
+        getenv('CHORDPRO'),
         "--config=./conf.prp",
         "--diagrams=none",
         "-o", "/dev/stdout",

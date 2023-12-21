@@ -41,7 +41,7 @@ e:
 	ls -1 tmp.cho conf.prp | entr -p ./post.zsh $(IP):$(PORT) $(PDF) $(CHO)
 
 s:
-	cd ~/ChordProMax; flask -A myapp run -h $(IP) -p $(PORT) --debug
+	cd ~/ChordProMax; env CHORDPRO=/opt/homebrew/opt/perl/bin/chordpro flask -A myapp run -h $(IP) -p $(PORT) --debug
 
 c:
 	rm -fv $(PDF)
