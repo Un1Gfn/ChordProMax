@@ -54,7 +54,7 @@ pdf {
   formats {
     default {
       # "text_right" "text_center" "text_left"
-      footer = [ "page %{page} of %{pages}" "generated with ChordPro 6.030 on %{today}" "%{title}" ]
+      footer = [ "page %{page} of %{pages}" "generated with ChordPro on %{today}" "%{title}" ]
     }
     first {
       footer = [ "%{title}" "%{today}" "page %{page} of %{pages}" ]
