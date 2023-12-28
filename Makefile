@@ -46,7 +46,7 @@ e:
 	ls -1 tmp.cho conf.prp | entr -p ./post.zsh $(IP):$(PORT) $(PDF) $(CHO)
 
 s:
-	cd ~/ChordProMax; env CHORDPRO=/opt/homebrew/opt/perl/bin/chordpro flask -A myapp run -h $(IP) -p $(PORT) --debug
+	./flask.zsh -A myapp run -h $(IP) -p $(PORT) --debug
 
 c:
 	rm -fv $(PDF)
@@ -56,4 +56,4 @@ emptypdf:
 	gs -sDEVICE=pdfwrite -o $(PDF) -g5950x8420 -c showpage
 
 a:
-	./a2crd.zsh tmp.txt
+	@./a2crd.zsh tmp.txt

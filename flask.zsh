@@ -1,19 +1,9 @@
 #!/usr/bin/env zsh
 
-
-C=(
-  chordpro
-  # -x +5
-  --a2crd $1
-)
-
-echo
-echo
-echo
+cd ~/ChordProMax
 
 eval "$($HOMEBREW_PREFIX/bin/perl -I$HOME/perl5/lib/perl5 -Mlocal::lib=$HOME/perl5)"
-$C[@]
 
-echo
-echo
-echo
+export CHORDPRO=$HOME/perl5/bin/chordpro
+
+flask $@
