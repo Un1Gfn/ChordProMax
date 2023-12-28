@@ -10,14 +10,16 @@ PDF:=tmp.pdf
 .PHONY: help
 help:
 	echo
-	echo '$(MAKE) c' - delete PDF
-	echo '$(MAKE) s' - flask
-	echo '$(MAKE) e' - entr
-	echo '$(MAKE) o' - open
+	echo $(MAKE) a - a2crd
+	echo $(MAKE) c - delete PDF
+	echo $(MAKE) s - flask
+	echo $(MAKE) e - entr
+	echo $(MAKE) o - open
 	echo
-	echo '$(MAKE) 2' -               flask + entr
-	echo '$(MAKE) 3' -        open + flask + entr
-	echo '$(MAKE) 4' - code + open + flask + entr
+	@ # echo '$(MAKE) 0 - code + a2crd'
+	echo '$(MAKE) 2 -               flask + entr'
+	echo '$(MAKE) 3 -        open + flask + entr'
+	echo '$(MAKE) 4 - code + open + flask + entr'
 	echo
 
 4:
@@ -33,6 +35,9 @@ help:
 
 2:
 	$(MAKE) -j2 s e
+
+# 0:
+# 	code tmp.txt a2crd.zsh
 
 o:
 	open $(PDF)
@@ -50,4 +55,5 @@ c:
 emptypdf:
 	gs -sDEVICE=pdfwrite -o $(PDF) -g5950x8420 -c showpage
 
-# a2crd:
+a:
+	./a2crd.zsh tmp.txt
