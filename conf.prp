@@ -18,6 +18,15 @@ chords = [
     name = "C/E"
   }
   {
+    name = "C2"
+  }
+  {
+    name = "C2/E"
+  }
+  {
+    name = "Fmaj9"
+  }
+  {
     name = "C/G"
   }
   {

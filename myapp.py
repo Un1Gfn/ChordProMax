@@ -52,7 +52,7 @@ def hello_world():
         "--meta", f"key={key}",
         "--meta", f"subtitle={subtitle}",
         "-x", TRANSPOSE[key],
-        "--nostrict",
+        "--no-strict",
         "-",
     ]
     print(args)

@@ -56,4 +56,4 @@ emptypdf:
 	gs -sDEVICE=pdfwrite -o $(PDF) -g5950x8420 -c showpage
 
 a:
-	@./a2crd.zsh tmp.txt
+	zsh ./a2crd.zsh tmp.txt
