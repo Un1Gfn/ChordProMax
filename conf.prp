@@ -15,6 +15,15 @@ dates.today.format = "%a %e %b %Y %T %Z"
 
 chords = [
   {
+    name = "Ab/C"
+  }
+  {
+    name = "A/Db"
+  }
+  {
+    name = "Bb/D"
+  }
+  {
     name = "C/E"
   }
   {
@@ -24,22 +33,25 @@ chords = [
     name = "C2/E"
   }
   {
-    name = "Fmaj9"
-  }
-  {
     name = "C/G"
   }
   {
     name = "Em/G#"
   }
   {
-    name = "G/B"
+    name = "Fmaj9"
   }
   {
     name = "F/C"
   }
   {
     name = "F2"
+  }
+  {
+    name = "Gb2"
+  }
+  {
+    name = "G/B"
   }
 ]
 
