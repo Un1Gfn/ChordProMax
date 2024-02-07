@@ -48,6 +48,9 @@ chords = [
     name = "F2"
   }
   {
+    name = "Gadd4"
+  }
+  {
     name = "Gb2"
   }
   {
